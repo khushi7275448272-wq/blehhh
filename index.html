@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>My Love Letter ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5efe6;
+  color: #3b2f2f;
+  font-family: 'Playfair Display', serif;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 15px;
+  background: rgba(245,239,230,0.95);
+  text-align: center;
+  z-index: 1000;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #6b4c3b;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* SECTIONS */
+section {
+  min-height: 100vh;
+  padding: 120px 12% 60px;
+  display: none;
+  animation: fadeSlide 1s ease;
+}
+
+section.active {
+  display: block;
+}
+
+/* TEXT */
+h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+/* CARD */
+.card {
+  background: #fffaf3;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+  margin-top: 30px;
+}
+
+/* BUTTON */
+button {
+  margin-top: 25px;
+  padding: 12px 35px;
+  background: #7a4a3c;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+button:hover {
+  background: #9c5f5f;
+}
+
+/* HIDDEN NOTES */
+.hidden-note {
+  display: none;
+  margin-top: 20px;
+  font-style: italic;
+  animation: reveal 0.8s ease;
+}
+
+/* GALLERY */
+.gallery {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gallery img {
+  width: 250px;
+  border-radius: 15px;
+}
+
+/* VIDEO */
+video {
+  width: 80%;
+  border-radius: 20px;
+}
+
+/* ANIMATIONS */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- NAV -->
+<nav>
+  <a onclick="showSection('home')">Cover</a>
+  <a onclick="showSection('letters')">Letters</a>
+  <a onclick="showSection('gallery')">Memories</a>
+  <a onclick="showSection('video')">Video</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="active">
+  <h1>My Dearest Love</h1>
+  <div class="card">
+    <p>
+      This is not just a website.  
+      It is a love letter written slowly,  
+      softly, and only for you.
+    </p>
+    <button onclick="playMusic()">Open With Music 🎶</button>
+  </div>
+</section>
+
+<!-- LETTERS -->
+<section id="letters">
+  <h1>Letters I Never Sent</h1>
+
+  <div class="card">
+    <p>Tap to open the first letter</p>
+    <button onclick="reveal('note1')">Open ✉️</button>
+    <p id="note1" class="hidden-note">
+      Loving you feels like finding poetry in ordinary days.
+    </p>
+  </div>
+
+  <div class="card">
+    <p>Another one, just for you</p>
+    <button onclick="reveal('note2')">Open ✉️</button>
+    <p id="note2" class="hidden-note">
+      You are my favorite thought, my safest place, my home.
+    </p>
+  </div>
+
+  <div class="card">
+    <p>One last letter</p>
+    <button onclick="reveal('note3')">Open ✉️</button>
+    <p id="note3" class="hidden-note">
+      If love had a sound, it would be your voice saying my name.
+    </p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <h1>Moments I Treasure</h1>
+  <div class="card">
+    <div class="gallery">
+      <img src="photo1.jpg" alt="">
+      <img src="photo2.jpg" alt="">
+      <img src="photo3.jpg" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video">
+  <h1>A Moment Forever</h1>
+  <div class="card">
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll("section").forEach(sec => {
+    sec.classList.remove("active");
+  });
+  document.getElementById(id).classList.add("active");
+}
+
+function reveal(id) {
+  document.getElementById(id).style.display = "block";
+}
+
+function playMusic() {
+  const music = document.getElementById("bgMusic");
+  music.play();
+}
+</script>
+
+</body>
+</html>
